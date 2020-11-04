@@ -9,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab1Page implements OnInit {
   peliculaReciente: Pelicula[] = [];
+  slideOpts = {
+    slidesPerView: 1.1,
+    freeMode: true
+}
 
+  
   constructor(private movie: MoviesService) {}
+
+  
 
 
   ngOnInit(): void {
@@ -19,5 +26,6 @@ export class Tab1Page implements OnInit {
       this.peliculaReciente = resp.results;
     });
   }
+  
 
 }
