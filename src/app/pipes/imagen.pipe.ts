@@ -9,7 +9,7 @@ export class ImagenPipe implements PipeTransform {
 
   transform(imagen: string, size: string = 'w500'): string {
     if (!imagen) {
-      return;
+      return './assets/no-image-banner.jpg';
     }
 
     const imgUrl = `${Url}/${size}${imagen}`
