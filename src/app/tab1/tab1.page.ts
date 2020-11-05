@@ -11,10 +11,7 @@ export class Tab1Page implements OnInit {
   peliculaReciente: Pelicula[] = [];
 
 
-  slideOpts = {
-    slidesPerView: 1.1,
-    freeMode: true
-};
+  
 
   
   constructor(private movie: MoviesService) {}
