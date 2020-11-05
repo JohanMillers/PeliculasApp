@@ -4,7 +4,14 @@
       <ion-col>Peliculas  Recientes</ion-col>
     </ion-row>
   </ion-grid>
-
   <app-slideshow-backdrop [Peliculas]="peliculaReciente"></app-slideshow-backdrop>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>Cartelera</ion-col>
+    </ion-row>
+  </ion-grid>
+ <app-slideshow-poster [Peliculas]="peliculaReciente"></app-slideshow-poster>
  
 </ion-content>
+
