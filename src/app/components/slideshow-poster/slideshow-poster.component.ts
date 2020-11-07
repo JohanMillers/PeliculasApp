@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ModalController } from '@ionic/angular';
 import { Pelicula } from 'src/app/Interfaces/interfaces';
+import { DestalleComponent } from '../destalle/destalle.component';
 
 @Component({
   selector: 'app-slideshow-poster',
@@ -19,15 +20,25 @@ export class SlideshowPosterComponent implements OnInit {
     freeMode: true,
     spaceBetween: -10
 };
-  constructor() {}
+  constructor(private ModalController: ModalController) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onClick(){
     console.log('cargas mas....')
     this.cargarMas.emit();
   }
+  async verDestalle(id: string){
+    const mondal =  await this.ModalController.create({
+      component: DestalleComponent,
+      componentProps: {
+        id
+      }
+    });
+
+    mondal.present();
+  }
+  
 
 
 

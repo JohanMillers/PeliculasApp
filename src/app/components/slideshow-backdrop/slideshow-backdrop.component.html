@@ -1,6 +1,6 @@
 <ion-slides mode="ios"  [options]="slideOpts">
   <ion-slide *ngFor="let pelicula of Peliculas">
-    <ion-card>
+    <ion-card (click)="verDestalle(pelicula.id)">
       <ion-img [src]="pelicula.backdrop_path | imagen"></ion-img>
     </ion-card>
   </ion-slide>

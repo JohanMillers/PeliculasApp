@@ -1,3 +1,4 @@
+import { DestalleComponent } from './destalle/destalle.component';
 import { TituloComponent } from './titulo/titulo.component';
 import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.component';
 import { PipesModule } from './../pipes/pipes.module';
@@ -12,12 +13,15 @@ import { CommonModule } from '@angular/common';
   declarations: [
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
-    TituloComponent
+    TituloComponent,
+    DestalleComponent
   ],
   exports: [
     SlideshowBackdropComponent,
     SlideshowPosterComponent,
-    TituloComponent
+    TituloComponent,
+    DestalleComponent
+
   ],
   imports: [
     CommonModule,
