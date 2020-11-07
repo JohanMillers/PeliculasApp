@@ -1,3 +1,4 @@
+import { TituloComponent } from './titulo/titulo.component';
 import { SlideshowPosterComponent } from './slideshow-poster/slideshow-poster.component';
 import { PipesModule } from './../pipes/pipes.module';
 import { IonicModule } from '@ionic/angular';
@@ -10,11 +11,13 @@ import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     SlideshowBackdropComponent,
-    SlideshowPosterComponent
+    SlideshowPosterComponent,
+    TituloComponent
   ],
   exports: [
     SlideshowBackdropComponent,
-    SlideshowPosterComponent
+    SlideshowPosterComponent,
+    TituloComponent
   ],
   imports: [
     CommonModule,
