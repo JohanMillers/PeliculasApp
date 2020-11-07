@@ -12,13 +12,17 @@ export class MoviesService {
 
   constructor(private http: HttpClient) { }
 
+  getPopulares(){
+    return this.http.get<MovieReponses>(`${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apikey}&language=es`)
+  }
+
   getPelicula(){
 
     const hoy = new Date();
     const ultimoDia = new Date(hoy.getFullYear(), hoy.getMonth() + 1, 0).getDate();
     const mes = hoy.getMonth() + 1;
 
-    let mesString;
+    let mesString: any;
 
     if (mes < 10) {
       mesString = '0' + mes;

@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab1Page implements OnInit {
   peliculaReciente: Pelicula[] = [];
+  populares: Pelicula[] = []; 
 
 
   
@@ -21,9 +22,14 @@ export class Tab1Page implements OnInit {
 
   ngOnInit(): void {
     this.movie.getPelicula().subscribe( resp => {
-      console.log(resp.results)
+      // console.log(resp.results)
       this.peliculaReciente = resp.results;
     });
+
+    this.movie.getPopulares().subscribe(populares => {
+      console.log('resp',populares.results);
+      this.populares = populares.results;
+    })
   }
   
 
