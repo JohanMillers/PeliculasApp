@@ -1,4 +1,4 @@
-import { MovieReponses } from './../Interfaces/interfaces';
+import { MovieReponses, PeliculaDetalle, RespuestaCredits } from './../Interfaces/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { getLocaleDateTimeFormat } from '@angular/common';
@@ -37,4 +37,16 @@ export class MoviesService {
 
     return this.http.get<MovieReponses>(`${this.urlMoviedb}/discover/movie?primary_release_date.gte=2020-10-15&primary_release_date.lte=${fin}&api_key=${this.apikey}&language=es`);
   }
+// petinciones de destalles de la peliculas 
+  getPeliculaDestalle(id: string) {
+    return this.http.get<PeliculaDetalle>(`${this.urlMoviedb}/movie/${id}?api_key=${this.apikey}&language=es`);
+    
+  }
+  // petinciones de destalles de la peliculas 
+
+//  Peticion para los actores 
+  getActoresPelicula(id: string){
+    return this.http.get<RespuestaCredits>(`${this.urlMoviedb}/movie/${id}/credits?api_key=${this.apikey}&language=es`);
+  }
+  //  Peticion para los actores 
 }
