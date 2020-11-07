@@ -13,7 +13,8 @@
  <app-titulo titulo = "Populares"></app-titulo>
   <!-- Componete para mostrar titulo -->
 
- <app-slideshow-poster [Peliculas]="populares"></app-slideshow-poster>
+ <app-slideshow-poster [Peliculas]="populares"
+                       (cargarMas)="cargarMas()" ></app-slideshow-poster>
  
 </ion-content>
 

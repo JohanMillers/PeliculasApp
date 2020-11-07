@@ -9,11 +9,14 @@ import { getLocaleDateTimeFormat } from '@angular/common';
 export class MoviesService {
   private apikey = '79279b415e6f8506ed9d11b5eede79ce';
   private urlMoviedb = 'https://api.themoviedb.org/3';
+  private popuralesPages = 0;
+
 
   constructor(private http: HttpClient) { }
 
   getPopulares(){
-    return this.http.get<MovieReponses>(`${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apikey}&language=es`)
+    this.popuralesPages++;
+    return this.http.get<MovieReponses>(`${this.urlMoviedb}/discover/movie?sort_by=popularity.desc&api_key=${this.apikey}&language=es&page=${this.popuralesPages}`)
   }
 
   getPelicula(){

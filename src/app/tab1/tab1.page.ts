@@ -10,15 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class Tab1Page implements OnInit {
   peliculaReciente: Pelicula[] = [];
   populares: Pelicula[] = []; 
-
-
   
 
-  
   constructor(private movie: MoviesService) {}
-
-  
-
 
   ngOnInit(): void {
     this.movie.getPelicula().subscribe( resp => {
@@ -26,10 +20,18 @@ export class Tab1Page implements OnInit {
       this.peliculaReciente = resp.results;
     });
 
+   this.getPopulares();
+  }
+  
+  cargarMas(){
+    this.getPopulares()
+  }
+
+  getPopulares() {
     this.movie.getPopulares().subscribe(populares => {
-      console.log('resp',populares.results);
-      this.populares = populares.results;
+      this.populares.push(...populares.results);
     })
+
   }
   
 
