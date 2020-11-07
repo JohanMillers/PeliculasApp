@@ -15,15 +15,14 @@
 <ion-content [fullscreen]="true">
   <ion-grid fixed>
     <ion-row>
-      <ion-col class="ion-text-center">
+      <ion-col  *ngIf="!Peliculas.length > 0" 
+                class="ion-text-center">
         <ion-spinner name="crescent"></ion-spinner>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  
-
-  <ion-list>
+  <ion-list *ngIf="!Peliculas.length > 0">
     <ion-list-header>
       <ion-label>Ideas</ion-label>
     </ion-list-header>
@@ -32,4 +31,23 @@
       <ion-label color="primary">{{idea}}</ion-label>
     </ion-item>
   </ion-list>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="6" *ngFor="let pelicula of Peliculas">
+        <ion-card>
+          <img [src]="pelicula.poster_path  | imagen">
+          <ion-card-header>
+            <ion-card-subtitle>{{ pelicula.title }}</ion-card-subtitle>
+          </ion-card-header>
+
+            <ion-card-content>
+              <h2>{{ pelicula.vote_average }}</h2>
+            </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>

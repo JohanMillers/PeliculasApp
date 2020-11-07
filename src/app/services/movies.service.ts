@@ -1,4 +1,4 @@
-import { MovieReponses, PeliculaDetalle, RespuestaCredits } from './../Interfaces/interfaces';
+import { MovieReponses, PeliculaDetalle, RespuestaCredits, SearchResponse } from './../Interfaces/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { getLocaleDateTimeFormat } from '@angular/common';
@@ -49,4 +49,11 @@ export class MoviesService {
     return this.http.get<RespuestaCredits>(`${this.urlMoviedb}/movie/${id}/credits?api_key=${this.apikey}&language=es`);
   }
   //  Peticion para los actores 
+
+  getbuscarPelicula(termino: string){
+
+    return this.http.get<SearchResponse>(`${this.urlMoviedb}/search/movie?query=${termino}&api_key=${this.apikey}&language=es&page=1&include_adult=true`);
+    // https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+
+  }
 }

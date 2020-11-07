@@ -98,4 +98,35 @@ export interface PeliculaDetalle {
     order?: number;
     profile_path?: string;
   }
+
+  export interface SearchResponse {
+    page:          number;
+    total_results: number;
+    total_pages:   number;
+    results:       Result[];
+}
+
+export interface Result {
+    popularity:        number;
+    id:                number;
+    video:             boolean;
+    vote_count:        number;
+    vote_average:      number;
+    title:             string;
+    release_date:      Date;
+    original_language: OriginalLanguage;
+    original_title:    string;
+    genre_ids:         number[];
+    backdrop_path:     null | string;
+    adult:             boolean;
+    overview:          string;
+    poster_path:       null | string;
+}
+
+export enum OriginalLanguage {
+    Da = "da",
+    En = "en",
+    It = "it",
+    Ro = "ro",
+}
   
