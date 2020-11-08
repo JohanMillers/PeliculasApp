@@ -14,6 +14,7 @@ export class Tab1Page implements OnInit {
   Generos: Pelicula[] = [];
   GeneMixtos: Pelicula[] = [];
   SeriesPopulares: Serie[] = [];
+  TopRanking : Pelicula[] = [];
 
   constructor(private movie: MoviesService) {}
 
@@ -23,9 +24,6 @@ export class Tab1Page implements OnInit {
       this.peliculaReciente = resp.results;
     });
 
-    
-    
-
    this.getPopulares();
 
    this.getNinos();
@@ -33,6 +31,8 @@ export class Tab1Page implements OnInit {
    this.getGenero();
 
    this.getGenMixtos()
+
+   this.getTop_Ranking();
 
 
 
@@ -43,6 +43,8 @@ export class Tab1Page implements OnInit {
     this.getGenero()
     this.getNinos()
     this.getGenMixtos()
+    this.getTop_Ranking()
+
 
     
   }
@@ -71,6 +73,13 @@ export class Tab1Page implements OnInit {
       console.log(resp.results);
       this.GeneMixtos.push(...resp.results);
     });
+  }
+
+  getTop_Ranking(){
+    this.movie.getPeliculaTop_Raking().subscribe( top => {
+      this.TopRanking.push(...top.results);
+    });
+
   }
   
 

@@ -1,14 +1,22 @@
+<ion-header>
+  <ion-toolbar class="ion-no-border">
+    <ion-title class="ion-text-center">Pelis App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
   <!-- Componete para mostrar titulo -->
   <app-titulo titulo="Pelicula Reciente"></app-titulo>
   <!-- Componete para mostrar titulo -->
 
   <app-slideshow-backdrop [Peliculas]="peliculaReciente"></app-slideshow-backdrop>
-<!-- Componete para mostrar titulo -->
- <!-- Componete para mostrar titulo -->
- <app-titulo titulo = "Populares"></app-titulo>
-  <!-- Componete para mostrar titulo -->
 
+  
+ <app-titulo titulo = "Pelicula mas Ranking"></app-titulo>
+<app-slideshow-poster [Peliculas]="TopRanking" 
+                      (cargarMas)="cargarMas()"></app-slideshow-poster>
+
+ <app-titulo titulo = "Populares"></app-titulo>
  <app-slideshow-poster [Peliculas]="populares"
                        (cargarMas)="cargarMas()" ></app-slideshow-poster>
 
@@ -23,6 +31,8 @@
 <app-titulo titulo = "Pelicula de accion,ciencia ficcion y mas"></app-titulo>
 <app-slideshow-poster [Peliculas]="GeneMixtos" 
                       (cargarMas)="cargarMas()"></app-slideshow-poster>
+
+
  
 </ion-content>
 

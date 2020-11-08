@@ -12,7 +12,7 @@ import { DestalleComponent } from '../components/destalle/destalle.component';
 })
 export class Tab2Page implements OnInit {
   textoBuscar = '';
-  ideas: string[] = ['Spiderman','Avenger','Yo ante de ti','Black Phante'];
+  ideas: string[] = ['Spiderman','Avenger','Dragon ball','one piece'];
   Peliculas: Pelicula[] = [];
   Buscando = false;
 
