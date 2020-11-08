@@ -5,16 +5,24 @@
 
   <app-slideshow-backdrop [Peliculas]="peliculaReciente"></app-slideshow-backdrop>
 <!-- Componete para mostrar titulo -->
-  <app-titulo titulo = "Peliculas en Cartelera"></app-titulo>
-  <!-- Componete para mostrar titulo -->
-
- <app-slideshow-poster [Peliculas]="peliculaReciente"></app-slideshow-poster>
  <!-- Componete para mostrar titulo -->
  <app-titulo titulo = "Populares"></app-titulo>
   <!-- Componete para mostrar titulo -->
 
  <app-slideshow-poster [Peliculas]="populares"
                        (cargarMas)="cargarMas()" ></app-slideshow-poster>
+
+<app-titulo titulo = "Películas para niños"></app-titulo>
+<app-slideshow-poster [Peliculas]="ninos" 
+                      (cargarMas)="cargarMas()"></app-slideshow-poster>
+
+<app-titulo titulo = "Mejores pelicula animadas"></app-titulo>
+<app-slideshow-poster [Peliculas]="Generos" 
+                      (cargarMas)="cargarMas()"></app-slideshow-poster>
+
+<app-titulo titulo = "Pelicula de accion,ciencia ficcion y mas"></app-titulo>
+<app-slideshow-poster [Peliculas]="GeneMixtos" 
+                      (cargarMas)="cargarMas()"></app-slideshow-poster>
  
 </ion-content>
 

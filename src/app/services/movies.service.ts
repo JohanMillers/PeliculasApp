@@ -1,4 +1,4 @@
-import { MovieReponses, PeliculaDetalle, RespuestaCredits, SearchResponse } from './../Interfaces/interfaces';
+import { MovieReponses, PeliculaDetalle, RespuestaCredits, SearchResponse, SerieReponses } from './../Interfaces/interfaces';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { getLocaleDateTimeFormat } from '@angular/common';
@@ -10,6 +10,8 @@ export class MoviesService {
   private apikey = '79279b415e6f8506ed9d11b5eede79ce';
   private urlMoviedb = 'https://api.themoviedb.org/3';
   private popuralesPages = 0;
+
+ 
 
 
   constructor(private http: HttpClient) { }
@@ -42,6 +44,10 @@ export class MoviesService {
     return this.http.get<PeliculaDetalle>(`${this.urlMoviedb}/movie/${id}?api_key=${this.apikey}&language=es`);
     
   }
+  // getserieDestalle(id: string) {
+  //   return this.http.get<SerieReponses>(`${this.urlMoviedb}/tv/${id}?api_key=${this.apikey}&language=es`);
+    
+  // }
   // petinciones de destalles de la peliculas 
 
 //  Peticion para los actores 
@@ -51,9 +57,27 @@ export class MoviesService {
   //  Peticion para los actores 
 
   getbuscarPelicula(termino: string){
-
-    return this.http.get<SearchResponse>(`${this.urlMoviedb}/search/movie?query=${termino}&api_key=${this.apikey}&language=es&page=1&include_adult=true`);
-    // https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+    return this.http.get<SearchResponse>(`${this.urlMoviedb}/search/movie?query=${termino}&api_key=${this.apikey}&include_adult=false`);
 
   }
+  getPeliculaNinos(){
+    this.popuralesPages++;
+    return this.http.get<MovieReponses>(`${this.urlMoviedb}/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc&api_key=${this.apikey}&language=es&page=${this.popuralesPages}`);
+    
+  }
+  getPeliculaGeneros(){
+    this.popuralesPages++;
+    return this.http.get<MovieReponses>(`${this.urlMoviedb}/discover/movie?with_genres=16&sort_by=vote_average.desc&vote_count.gte=10&api_key=${this.apikey}&language=es&page=${this.popuralesPages}`);
+  }
+  getPeliGenero(){
+    this.popuralesPages++;
+    return this.http.get<MovieReponses>(`${this.urlMoviedb}/discover/movie?with_genres=28&874&sort_by=vote_average.desc&vote_count.gte=10&api_key=${this.apikey}&language=es&page=${this.popuralesPages}`);
+  }
+
+  // getSeriePopulares(){
+  //   this.popuralesPages++;
+  //   return this.http.get<SerieReponses>(`${this.urlMoviedb}/tv/popular?api_key=${this.apikey}&language=es&page=${this.popuralesPages}`)
+  // }
+
+
 }

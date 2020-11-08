@@ -29,7 +29,9 @@ export class DestalleComponent implements OnInit {
     // console.log(this.id);
     this.MoviesService.getPeliculaDestalle(this.id).subscribe(resp => {
       this.pelicula = resp;
-    })
+    });
+
+
     this.MoviesService.getActoresPelicula(this.id).subscribe(resp => {
       this.Actores = resp.cast.filter(actor => actor.profile_path !== null);
     })

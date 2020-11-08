@@ -1,7 +1,9 @@
+import { ModalController } from '@ionic/angular';
 import { Pelicula } from 'src/app/Interfaces/interfaces';
 import { SearchResponse } from './../Interfaces/interfaces';
 import { MoviesService } from './../services/movies.service';
 import { Component, OnInit } from '@angular/core';
+import { DestalleComponent } from '../components/destalle/destalle.component';
 
 @Component({
   selector: 'app-tab2',
@@ -10,22 +12,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab2Page implements OnInit {
   textoBuscar = '';
-  ideas: string[] = ['Spiderman','Avenger','Yo ante de ti','Black Phanter'];
+  ideas: string[] = ['Spiderman','Avenger','Yo ante de ti','Black Phante'];
   Peliculas: Pelicula[] = [];
+  Buscando = false;
 
-  constructor(private MoviesService: MoviesService) {}
-
-  ngOnInit(): void {
-    
-    
+  slideOptPoster = {
+    slidesPerView: 3.3,
+    freeMode: true,
+    spacebetween: -5
   }
+  
+
+  constructor(private MoviesService: MoviesService,
+              private ModalController: ModalController) {}
+
+  ngOnInit(): void {}
 
   onSearchChange(ev){
-    const valor = ev.detail.value;
+
+    const valor: string = ev.detail.value;
+    if(valor.length === 0){
+      this.Buscando = false;
+      this.Peliculas = [];
+      return;
+    }
+
+    this.Buscando = true;
     this.MoviesService.getbuscarPelicula(valor).subscribe( resp => {
       console.log(resp.results);
-      this.Peliculas = resp.results;
+      this.Peliculas = resp.results.filter(actor =>actor.poster_path !== null);
+      this.Buscando = false;
     });
   }
+
+  async verDestalle(id: string){
+    const mondal =  await this.ModalController.create({
+      component: DestalleComponent,
+      componentProps: {
+        id
+      }
+    });
+
+    mondal.present();
+
+}
 
 }
