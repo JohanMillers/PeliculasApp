@@ -74,10 +74,10 @@ export class MoviesService {
     return this.http.get<MovieReponses>(`${this.urlMoviedb}/discover/movie?with_genres=28&874&sort_by=vote_average.desc&vote_count.gte=10&api_key=${this.apikey}&language=es&page=${this.popuralesPages}`);
   }
 
-  // getSeriePopulares(){
-  //   this.popuralesPages++;
-  //   return this.http.get<SerieReponses>(`${this.urlMoviedb}/tv/popular?api_key=${this.apikey}&language=es&page=${this.popuralesPages}`)
-  // }
+  getPeliculaTop_Raking(){
+    this.popuralesPages++;
+    return this.http.get<MovieReponses>(`${this.urlMoviedb}/movie/top_rated?api_key=${this.apikey}&language=es&page=${this.popuralesPages}`);
+  }
 
 
 }
