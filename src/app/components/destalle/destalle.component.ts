@@ -1,3 +1,4 @@
+import { DatalocalService } from './../../services/datalocal.service';
 import { ModalController } from '@ionic/angular';
 import { Cast, PeliculaDetalle } from './../../Interfaces/interfaces';
 import { MoviesService } from './../../services/movies.service';
@@ -23,7 +24,8 @@ export class DestalleComponent implements OnInit {
 
 
   constructor(private MoviesService: MoviesService,
-              private ModalController: ModalController) { }
+              private ModalController: ModalController,
+              private datallocal: DatalocalService) { }
 
   ngOnInit() {
     // console.log(this.id);
@@ -38,8 +40,14 @@ export class DestalleComponent implements OnInit {
   }
   regresar() {
     this.ModalController.dismiss();
+  }
+
+  favorito(){
+    this.datallocal.guardarPelicula(this.pelicula);
 
   }
+
+
 
 
 }
