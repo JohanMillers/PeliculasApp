@@ -1,13 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title class="ion-text-center ion-margin-top ion-margin-bottom">
-      Buscar Pelicula
-    </ion-title>
     <ion-searchbar placeholder="Buscar pelicula"
                  animated
                  (ionChange)="onSearchChange($event)" 
                  [debounce]="700" 
                  [value]="textoBuscar"
+                 class="ion-margin-top ion-margin-bottom"
                  ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
@@ -35,8 +33,8 @@
   <ion-grid fixed>
     <ion-row>
       <ion-col size="4" *ngFor="let pelicula of Peliculas">
-        <ion-card class="poster" (click)="verDestalle(pelicula.id)">
-          <img class="poster" [src]="pelicula.poster_path  | imagen">
+        <ion-card mode="md" class="poster ion-margin-horizontal" (click)="verDestalle(pelicula.id)">
+          <img class="poster" mode="md" [src]="pelicula.poster_path  | imagen">
           <ion-card-header>
             <ion-card-subtitle>{{ pelicula.title  | slice: 0:26}}</ion-card-subtitle>
           </ion-card-header>

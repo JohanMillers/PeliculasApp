@@ -12,7 +12,7 @@ export class SlideshowBackdropComponent implements OnInit {
   @Input() Peliculas : Pelicula[] = [];
 
   slideOpts = {
-    slidesPerView: 1.3,
+    slidesPerView: 1,
     freeMode: true
 };
 
