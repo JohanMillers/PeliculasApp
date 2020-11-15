@@ -14,6 +14,7 @@ export class DestalleComponent implements OnInit {
 
   public pelicula : PeliculaDetalle = {};
   public Actores : Cast[] = [];
+  estrella = 'star-outline';
 
   slideOptPoster = {
     slidesPerView: 3.3,
@@ -27,8 +28,12 @@ export class DestalleComponent implements OnInit {
               private ModalController: ModalController,
               private datallocal: DatalocalService) { }
 
-  ngOnInit() {
+   ngOnInit() {
     // console.log(this.id);
+    this.datallocal.existePeliculas(this.id)
+    .then(existe => this.estrella = (existe) ? 'star' : 'star-outline');
+    
+
     this.MoviesService.getPeliculaDestalle(this.id).subscribe(resp => {
       this.pelicula = resp;
     });
@@ -43,8 +48,8 @@ export class DestalleComponent implements OnInit {
   }
 
   favorito(){
-    this.datallocal.guardarPelicula(this.pelicula);
-
+     const existe = this.datallocal.guardarPelicula(this.pelicula);
+    this.estrella = (existe) ? 'star' : 'star-outline';
   }
 
 
