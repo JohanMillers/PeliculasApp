@@ -43,6 +43,10 @@ export class Tab2Page implements OnInit {
       this.Peliculas = resp.results.filter(actor =>actor.poster_path !== null);
       this.Buscando = false;
     });
+
+    this.MoviesService.getPopulares().subscribe(resp => {
+      
+    })
   }
 
   async verDestalle(id: string){

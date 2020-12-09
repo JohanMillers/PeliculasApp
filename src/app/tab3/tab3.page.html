@@ -1,6 +1,22 @@
 
 <ion-content [fullscreen]="true">
-  <app-titulo titulo="Favoritos"></app-titulo>
-  <app-slideshow-poster [Peliculas]="favoritos" 
-                      (cargarMas)="cargarMas()"></app-slideshow-poster>
+  <!-- <app-titulo titulo="Mi Lista" ></app-titulo> -->
+  
+
+  <ion-grid fixed>
+    <h2 class="ion-text-center">Mi Lista</h2>
+  <ion-row>
+    <ion-col size="4" *ngFor="let pelicula of favoritos">
+      <ion-card mode="md" class="poster ion-margin-horizontal" (click)="verDestalle(pelicula.id)">
+        <img class="poster" mode="md" [src]="pelicula.poster_path  | imagen">
+        <ion-card-header>
+          <ion-card-subtitle>{{ pelicula.title  | slice: 0:26}}</ion-card-subtitle>
+        </ion-card-header>
+          <ion-card-content>
+            <h2>{{ pelicula.vote_average }}</h2>
+          </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>
